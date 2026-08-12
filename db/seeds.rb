@@ -4,5 +4,5 @@ Category.create([
   { name: "JavaScript" },
   { name: "CSS" },
   { name: "HTML" },
-  { name: "Programming" },
+  { name: "Programming" }
 ])

@@ -1,0 +1,9 @@
+<h1>Posts index page</h1>
+<%= link_to "New Post", new_post_path %>
+<% @posts.each do |post| %>
+  <article>
+    <h2><%= link_to post.title, post_path(post)%></h2>
+    <p><%= truncate(post.content, length: 150) %></p>
+  </article>
+<% end %>
+

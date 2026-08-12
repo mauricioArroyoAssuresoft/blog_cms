@@ -1,0 +1,10 @@
+<article>
+  <h1><%= @post.title%></h1>
+
+  <div>
+    <%= simple_format(@post.content)%>
+  </div>
+</article>
+
+<%= link_to("edit this post", edit_post_path(@post))%>
+<%= link_to("back to posts", posts_path())%>

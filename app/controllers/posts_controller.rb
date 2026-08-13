@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   def new
     @post = Post.new()
     @categories = Category.all()
+    @tags = Tag.all()
   end
 
   def create
@@ -24,6 +25,7 @@ class PostsController < ApplicationController
   def edit
     @post = Post.find(params[:id])
     @categories = Category.all()
+    @tags = Tag.all()
   end
 
   def update
@@ -37,6 +39,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content, :category_id)
+    params.require(:post).permit(:title, :content, :category_id, tag_ids: [])
   end
 end

@@ -21,7 +21,11 @@
   <div>
     <%= form.label(:category_id, "Category")%>
     <%= form.collection_select(:category_id, @categories, :id, :name, include_blank: true)%>
-  
+  </div>
+
+  <div>
+    <%= form.label(:tag_ids, "Tags")%>
+    <%= form.collection_check_boxes(:tag_ids, @tags, :id, :name) %>
   </div>
 
   <%= form.submit("Create Post")%>

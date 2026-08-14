@@ -1,0 +1,11 @@
+<h1>Register</h1>
+
+<%= form_with(model: @user, url:registration_path()) do |form| %>
+  <%= form.label(:email_address) %>
+  <%= form.email_field(:email_address) %>
+
+  <%= form.label(:password) %>
+  <%= form.password_field(:password) %>
+  <%= form.password_field(:password_confirmation) %>
+  <%= form.submit("Register") %>
+<%end%>

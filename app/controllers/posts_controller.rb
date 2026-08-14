@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  # MYTODO - check that edit has Current.User find(posts) so a user cannot edit the post of another user
+  before_action :require_authentication, except: %i[index show]
+
   def index
     @posts = Post.all()
   end
@@ -14,26 +17,30 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params())
+    @post = Current.user.posts.build(post_params())
     if @post.save()
       redirect_to(@post)
     else
+      @categories = Category.all()
+      @tags = Tag.all()
       render(:new, status: :unprocessable_entity)
     end
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @post = Current.user.posts.find(params[:id])
     @categories = Category.all()
     @tags = Tag.all()
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = Current.user.posts.find(params[:id])
 
     if @post.update(post_params())
       redirect_to(@post)
     else
+      @categories = Category.all()
+      @tags = Tag.all()
       render(:edit, status: :unprocessable_entity)
     end
   end

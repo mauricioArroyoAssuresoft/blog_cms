@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_08_12_203433) do
+ActiveRecord::Schema[8.1].define(version: 2026_08_13_162122) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -36,7 +36,18 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_12_203433) do
     t.string "status", default: "draft", null: false
     t.string "title"
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["category_id"], name: "index_posts_on_category_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "ip_address"
+    t.datetime "updated_at", null: false
+    t.string "user_agent"
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -45,7 +56,17 @@ ActiveRecord::Schema[8.1].define(version: 2026_08_12_203433) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "email_address", null: false
+    t.string "password_digest", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email_address"], name: "index_users_on_email_address", unique: true
+  end
+
   add_foreign_key "post_tags", "posts"
   add_foreign_key "post_tags", "tags"
   add_foreign_key "posts", "categories"
+  add_foreign_key "posts", "users"
+  add_foreign_key "sessions", "users"
 end

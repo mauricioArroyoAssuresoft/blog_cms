@@ -1,0 +1,11 @@
+<h1>Comments</h1>
+
+<% @comments.each() do |comment| %>
+  <article>
+    <p><%= comment.content %></p>
+    <small>
+      <%= comment.user.email_address%> on
+      <%= link_to(comment.post.title, post_path(comment.post))%>
+    </small>
+  </article>
+<% end %>

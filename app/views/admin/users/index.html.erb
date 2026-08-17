@@ -1,0 +1,8 @@
+<h1>Authors</h1>
+
+<% @users.each() do |user| %>
+  <article>
+    <p><%= user.email_address() %></p>
+    <p>Posts: <%= user.posts.count() %></p>
+  </article>
+<% end %>

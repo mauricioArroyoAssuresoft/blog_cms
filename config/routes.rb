@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   namespace(:admin) do
     root("dashboard#index")
     resources(:comments, only: :index)
+    resources(:posts)
+    resources(:categories)
+    resources(:tags)
+    resources(:users, :index)
   end
 
   # root route place near or at bottom

@@ -1,0 +1,8 @@
+<h1>Edit Post</h1>
+
+<%= form_with(model: [:admin, @post]) do |form| %>
+  <%= form.text_field(:title) %>
+  <%= form.text_area(:content) %>
+  <%= form.select(:status, Post.statuses.keys) %>
+  <%= form.submit("update post")%>
+<% end %>

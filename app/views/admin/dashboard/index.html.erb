@@ -1,0 +1,11 @@
+<h1>Admin Dashboard</h1>
+
+<ul>
+  <li>Posts: <%= @posts_count %></li>
+  <li>Drafts <%= @drafts_count %></li>
+  <li>Published: <%= @published_posts_count %></li>
+  <li>Comments: <%= @comments_count %></li>
+  <li>Users: <%= @users_count %></li>
+</ul>
+
+<%= link_to("Comments", admin_comments_path )%>

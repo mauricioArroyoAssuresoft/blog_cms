@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   # admin / namespace areas
   namespace(:admin) do
+    root("dashboard#index")
     resources(:comments, only: :index)
   end
 

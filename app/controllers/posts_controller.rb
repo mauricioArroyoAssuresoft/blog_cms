@@ -3,11 +3,11 @@ class PostsController < ApplicationController
   before_action :require_authentication, except: %i[index show]
 
   def index
-    @posts = Post.all()
+    @posts = Post.published.order(created_at: :desc)
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.published.find(params[:id])
   end
 
   def new

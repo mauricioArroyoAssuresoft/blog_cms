@@ -4,6 +4,21 @@
   <div>
     <%= simple_format(@post.content)%>
   </div>
+
+  <h2>Comments</h2>
+  <% @post.comments().each() do |comment| %>
+    <div>
+      <strong><%= comment.user.email_address %></strong>
+      <i><%= comment.content %></i>
+    </div>
+  <% end %>
+
+  <% if authenticated? %>
+    <%= form_with(model: [@post, Comment.new]) do |form| %>
+      <%= form.text_area(:content) %>
+      <%= form.submit("Add Comment") %>
+    <% end %>
+  <% end %>
 </article>
 
 <%= link_to("edit this post", edit_post_path(@post))%>

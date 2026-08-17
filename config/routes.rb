@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resource :session
   resource :registration
   resources :passwords, param: :token
-  resources :posts
+  resources(:posts) do
+    resources(:comments, only: :create)
+  end
+
   root "posts#index"
 end

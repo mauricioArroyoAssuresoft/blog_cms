@@ -5,4 +5,6 @@ class Post < ApplicationRecord
   has_many(:tags, through: :post_tags)
   belongs_to(:user, optional: true)
   has_many(:comments, dependent: :destroy)
+
+  validates(:title, presence: true)
 end

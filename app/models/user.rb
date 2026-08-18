@@ -4,4 +4,6 @@ class User < ApplicationRecord
   normalizes :email_address, with: ->(e) { e.strip.downcase }
   has_many(:posts, dependent: :nullify)
   has_many(:comments, dependent: :destroy)
+
+  validates(:email_address, presence: true)
 end

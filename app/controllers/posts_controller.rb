@@ -18,8 +18,9 @@ class PostsController < ApplicationController
 
   def create
     @post = Current.user.posts.build(post_params())
+    @post.status = :published
     if @post.save()
-      redirect_to(@post)
+      redirect_to(@post, notice: "Post was created")
     else
       @categories = Category.all()
       @tags = Tag.all()

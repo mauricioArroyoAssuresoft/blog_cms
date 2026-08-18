@@ -1,4 +1,8 @@
 <article>
+  <% if flash[:notice] %>
+    <p style="color: green;"><%= flash[:notice]%></p>
+  <% end %>
+
   <h1><%= @post.title%></h1>
 
   <div>

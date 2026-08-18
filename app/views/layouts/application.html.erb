@@ -11,8 +11,17 @@
     <header>
       <%= link_to "Blog CMS ", root_path %>
     </header>
-
+    <nav>
+      <%= link_to "Posts", posts_path %>
+      <%= link_to("Admin", admin_root_path) if authenticated?()%>
+      <%= link_to("Register", new_registration_path) unless authenticated?()%>
+    </nav>
     <main>
+      <% flash.each() do |type, message| %>
+        <% if type.to_s == "alert"%>
+          <p style="color: red;"><%= message %></p>
+        <% end %>
+      <% end %>
       <%= yield %>
     </main>
   </body>

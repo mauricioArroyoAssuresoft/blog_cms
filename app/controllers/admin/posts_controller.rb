@@ -19,7 +19,7 @@ class Admin::PostsController < ApplicationController
 
   def destroy
     @post.destroy()
-    redirect_to(admin_posts_path)
+    redirect_to(admin_posts_path, alert: "Post was deleted")
   end
 
   private
